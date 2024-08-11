@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's My Birthday</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #e74c3c;
+            margin: 20px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #3498db;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out 0.5s;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: zoomIn 2s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: #2ecc71;
+            margin-bottom: 15px;
+            animation: fadeIn 2s ease-in-out 1s;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        li {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 15px;
+            font-size: 1.1em;
+            color: #555;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, box-shadow 0.3s;
+            animation: fadeIn 2s ease-in-out 1.5s;
+        }
+
+        li:hover {
+            background: #f1f1f1;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #3498db;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            animation: fadeIn 2s ease-in-out 2s;
+        }
+
+        a:hover {
+            background-color: #3498db;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            margin-top: 30px;
+            max-width: 100%;
+            width: 100%;
+            height: 400px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 2s ease-in-out 2.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            li {
+                font-size: 1em;
+            }
+
+            img {
+                width: 90%;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>It's My Birthday</h1>
+    <h2>On the 5th September</h2>
+    <img src="https://images.pexels.com/photos/428124/pexels-photo-428124.jpeg?auto=compress&cs=tinysrgb&w=600"
+        alt="Birthday Image" width="500">
+    <h3>What to bring:</h3>
+    <ul>
+        <li>Snacks and appetizers</li>
+        <li>Drinks (both alcoholic and non-alcoholic)</li>
+        <li>Birthday cake or cupcakes</li>
+        <li>Party decorations</li>
+        <li>Plates, napkins, and utensils</li>
+        <li>Music playlist or speakers</li>
+        <li>Party favors or small gifts for guests</li>
+        <li>Camera or phone for photos</li>
+        <li>Games or entertainment options</li>
+        <li>Seating and tables (if needed)</li>
+    </ul>
+    <h3>This is where you need to go:</h3>
+    <a href="https://www.google.com/maps/@35.7040744,139.5577317,3a,75y,289.6h,87.01t,0.72r/data=!3m6!1e1!3m4!1sgT28ssf0BB2LxZ63JNcL1w!2e0!7i13312!8i6656"
+        target="_blank" rel="noopener noreferrer">
+        Find the Venue
+    </a>
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13860.890318016603!2d139.5577317!3d35.7040744!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60158a48f8e8e0b3%3A0xe41dfb1c13e0938d!2s35%C2%B042%2753.8%22N%2C%20139%C2%B033%2710.8%22E!5e0!3m2!1sen!2sus!4v1694898599811!5m2!1sen!2sus"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</body>
+
+</html>

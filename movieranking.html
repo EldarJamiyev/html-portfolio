@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Best Movies According to Eldar Jamiyev</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #34495e;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out 0.5s;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: #3498db;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin: 20px 0 10px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .movie-container {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto 20px auto;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .movie-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            border: none;
+            display: none;
+        }
+
+        p {
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.1em;
+            color: #555;
+            animation: fadeIn 2s ease-in-out 1s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            h3 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            img {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>The Best Movies According to Eldar Jamiyev</h1>
+    <h2>My Top 3 Movies of All Time</h2>
+    <hr />
+
+    <div class="movie-container" data-video="https://www.youtube.com/embed/sY1S34973zA?autoplay=1">
+        <a href="https://www.imdb.com/title/tt0068646/" target="_blank">
+            <img src="images/godfather.webp" alt="The Godfather movie" width="500">
+            <iframe src="" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </a>
+        <p>It's more than a film; it's a masterpiece of power, family, and timeless themes. The haunting score,
+            unforgettable dialogues, and nuanced performances create an experience that transcends entertainment,
+            immersing you in a world of deep human complexity and timeless storytelling.</p>
+    </div>
+
+    <div class="movie-container" data-video="https://www.youtube.com/embed/SUXWAEX2jlg?autoplay=1">
+        <a href="https://www.imdb.com/title/tt0137523/" target="_blank">
+            <img src="images/fightclub.jpg" alt="Fight Club movie" width="500">
+            <iframe src="" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </a>
+        <p>Its allure lies in its fearless confrontation of the mundane and the profound, weaving together a narrative
+            that challenges the very fabric of societal norms. The film's brilliance shines through its relentless
+            examination of masculinity, consumerism, and the quest for meaning in a world saturated with superficiality.
+        </p>
+    </div>
+
+    <div class="movie-container" data-video="https://www.youtube.com/embed/YoHD9XEInc0?autoplay=1">
+        <a href="https://www.imdb.com/title/tt1375666/" target="_blank">
+            <img src="images/inception.jfif" alt="Inception movie" width="500">
+            <iframe src="" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </a>
+        <p>It's a cinematic marvel that intricately weaves dreams within dreams, blending reality with illusion in a
+            stunning tapestry of imagination. The film's innovative narrative, breathtaking visuals, and haunting score
+            create an experience that challenges perceptions and captivates the mind, making it a profound exploration
+            of the power of dreams and the nature of reality.</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('.movie-container').forEach(container => {
+            const iframe = container.querySelector('iframe');
+            const videoSrc = container.dataset.video;
+            let timeoutId;
+
+            container.addEventListener('mouseenter', () => {
+                timeoutId = setTimeout(() => {
+                    iframe.src = videoSrc;
+                    iframe.style.display = 'block';
+                }, 2000);
+            });
+
+            container.addEventListener('mouseleave', () => {
+                clearTimeout(timeoutId);
+                iframe.src = '';
+                iframe.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>
