@@ -4,91 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            color: #333;
-            background-color: #f4f4f4;
-        }
-
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        img {
-            display: block;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        h2 {
-            color: #3498db;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .skills,
-        .hobbies {
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-    </style>
+    <title>Eldar Jamiyev - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 </head>
 
 <body>
-    <h1>About Me</h1>
-    <div class="container">
-        <img src="images/eldar.jfif" alt="Your Photo">
-        <h2>Hello, I'm Eldar Jamiyev</h2>
-        <p>
-            Welcome to my personal page! I am passionate about technology, music, and travel. With a background in
-            computer science, I love exploring new tech trends and innovations. In my free time, I enjoy playing the
-            guitar and piano, as well as discovering new destinations around the world.
-        </p>
-        <h2>Skills</h2>
-        <div class="skills">
+    <header>
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1>Eldar Jamiyev</h1>
+                <p>Web Developer | Designer | Problem Solver</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" data-aos="fade-up">
+        <div class="container">
+            <h2>About Me</h2>
+            <img src="images/eldar.jfif" alt="Eldar Jamiyev">
+            <h3>My Journey</h3>
             <ul>
-                <li>Web Development</li>
-                <li>Music Composition</li>
-                <li>Travel Planning</li>
-                <li>Video Gaming</li>
+                <li>Passionate web developer with 5 years of experience.</li>
+                <li>Proficient in modern web technologies and frameworks.</li>
+                <li>Dedicated to creating user-friendly and visually appealing websites.</li>
             </ul>
         </div>
-        <h2>Hobbies</h2>
-        <div class="hobbies">
+    </section>
+
+    <section id="skills" data-aos="fade-up">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill" data-aos="zoom-in">
+                    <i class="fas fa-code"></i>
+                    <h3>HTML & CSS</h3>
+                    <p>Expert in creating responsive and modern layouts.</p>
+                </div>
+                <div class="skill" data-aos="zoom-in">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>JavaScript</h3>
+                    <p>Proficient in building interactive web applications.</p>
+                </div>
+                <div class="skill" data-aos="zoom-in">
+                    <i class="fas fa-database"></i>
+                    <h3>Backend Development</h3>
+                    <p>Experienced in server-side scripting and database management.</p>
+                </div>
+                <div class="skill" data-aos="zoom-in">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Skilled in designing intuitive and engaging user interfaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" data-aos="fade-up">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project" data-aos="flip-left">
+                    <i class="fas fa-globe"></i>
+                    <h3>Portfolio Website</h3>
+                    <p>A personal portfolio showcasing my web development skills and projects.</p>
+                </div>
+                <div class="project" data-aos="flip-right">
+                    <i class="fas fa-tools"></i>
+                    <h3>Blog Platform</h3>
+                    <p>A user-friendly platform for bloggers to create, publish, and manage content.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" data-aos="fade-up">
+        <div class="container">
+            <h2>Contact</h2>
             <ul>
-                <li>Playing guitar and piano</li>
-                <li>Exploring new places</li>
-                <li>Watching movies and tv series</li>
-                <li>Swimming</li>
+                <li data-aos="fade-in"><a href="mailto:eldar@example.com">Email Me</a></li>
+                <li data-aos="fade-in"><a href="tel:+1234567890">Call Me</a></li>
+                <li data-aos="fade-in"><a href="https://linkedin.com/in/eldar-jamiyev">LinkedIn Profile</a></li>
             </ul>
         </div>
-    </div>
+    </section>
+
+    <footer data-aos="fade-up">
+        <p>&copy; 2024 Eldar Jamiyev. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200, // Animation duration in milliseconds
+            easing: 'ease-in-out', // Animation easing
+        });
+    </script>
 </body>
 
 </html>

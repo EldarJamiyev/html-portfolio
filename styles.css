@@ -1,0 +1,312 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #F0F0F0;
+    /* Light gray background */
+    color: #333;
+    overflow-x: hidden;
+}
+
+header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+nav a {
+    color: #004D40;
+    /* Dark green for nav links */
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #00796B;
+    /* Lighter dark green on hover */
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 77, 64, 0.8), rgba(240, 240, 240, 0.8));
+    /* Gradient with dark green and light gray */
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 20px 0 0;
+}
+
+section {
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#about {
+    background: linear-gradient(135deg, rgba(0, 77, 64, 0.6), rgba(240, 240, 240, 0.6));
+    /* Dark green to light gray gradient */
+    background-size: 400% 400%;
+    animation: gradientBackground2 20s ease infinite;
+}
+
+#skills {
+    background: linear-gradient(135deg, rgba(0, 77, 64, 0.4), rgba(240, 240, 240, 0.4));
+    /* Dark green to light gray gradient with less opacity */
+    background-size: 400% 400%;
+    animation: gradientBackground3 25s ease infinite;
+}
+
+#projects {
+    background: linear-gradient(135deg, rgba(0, 77, 64, 0.5), rgba(240, 240, 240, 0.5));
+    /* Dark green to light gray gradient */
+    background-size: 400% 400%;
+    animation: gradientBackground4 30s ease infinite;
+}
+
+#contact {
+    background: linear-gradient(135deg, rgba(0, 77, 64, 0.7), rgba(240, 240, 240, 0.7));
+    /* Dark green to light gray gradient with more opacity */
+    background-size: 400% 400%;
+    animation: gradientBackground5 35s ease infinite;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #FFF;
+    /* White background for containers */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 5px solid #004D40;
+    /* Dark green border */
+}
+
+.skills-grid,
+.projects-grid,
+.contact ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.skill,
+.project,
+.contact li {
+    background: #004D40;
+    /* Dark green background for skills, projects, and contact items */
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.skill i,
+.project i {
+    font-size: 2rem;
+}
+
+.skill:hover,
+.project:hover {
+    transform: translateY(-10px);
+}
+
+.contact a {
+    color: #FFF;
+    /* White text color for contact links */
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #004D40;
+    /* Dark green background for contact buttons */
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact a:hover {
+    background: #00796B;
+    /* Lighter dark green on hover */
+    transform: scale(1.05);
+    /* Slightly enlarge button on hover */
+}
+
+footer {
+    background: #004D40;
+    /* Dark green background for footer */
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+footer p {
+    margin: 0;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    25% {
+        background-position: 100% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes gradientBackground2 {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes gradientBackground3 {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes gradientBackground4 {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes gradientBackground5 {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+[data-aos] {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+[data-aos="fade-up"] {
+    transform: translateY(20px);
+}
+
+[data-aos="fade-down"] {
+    transform: translateY(-20px);
+}
+
+[data-aos="fade-left"] {
+    transform: translateX(-20px);
+}
+
+[data-aos="fade-right"] {
+    transform: translateX(20px);
+}
+
+[data-aos="zoom-in"] {
+    transform: scale(0.9);
+}
+
+[data-aos="flip-left"] {
+    transform: rotateY(-90deg);
+}
+
+[data-aos="flip-right"] {
+    transform: rotateY(90deg);
+}
