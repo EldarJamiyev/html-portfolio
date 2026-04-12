@@ -1,186 +1,1017 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eldar Jamiyev's Portfolio</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        header h2 {
-            margin: 0;
-            font-size: 1.8em;
-            color: #ecf0f1;
-            animation: fadeIn 2s ease-in-out 0.5s;
-        }
-
-        main {
-            flex: 1;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        main:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        hr {
-            border: 0;
-            height: 2px;
-            background-color: #3498db;
-            margin: 20px 0;
-        }
-
-        h3 {
-            font-size: 1.8em;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        a {
-            text-decoration: none;
-            color: #3498db;
-            transition: color 0.3s, transform 0.3s;
-            position: relative;
-        }
-
-        a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            height: 2px;
-            width: 0;
-            background: #3498db;
-            transition: width 0.3s;
-        }
-
-        a:hover::after {
-            width: 100%;
-        }
-
-        a:hover {
-            color: #2980b9;
-            transform: scale(1.05);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-        }
-
-        img:hover {
-            transform: scale(1.05);
-        }
-
-        .project-links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .project-links a {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            border-top: 2px solid #3498db;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-
-            header h2 {
-                font-size: 1.4em;
-            }
-
-            main {
-                padding: 10px;
-            }
-
-            h3 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eldar Jamiyev — System & Network Administrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <header>
-        <h1>Eldar Jamiyev's Portfolio</h1>
-        <h2>I'm a Web Developer</h2>
-    </header>
-    <main>
-        <div class="project-links">
-            <h3><a href="movieranking.html">Movie Ranking Project</a></h3>
-            <img src="images/mytopmovies.png" alt="Movie Ranking Project Preview" />
 
-            <h3><a href="mybirthday.html">Birthday Invite Project</a></h3>
-            <img src="images/mybirthdayimg.png" alt="Birthday Invite Project Preview" />
+  <!-- GLITCH OVERLAY -->
+  <div id="glitch-overlay" class="glitch-overlay"></div>
+
+  <!-- SCANLINE OVERLAY -->
+  <div class="scanline-overlay"></div>
+
+  <!-- CUSTOM CURSOR -->
+  <div id="cursor-dot" class="cursor-dot"></div>
+  <div id="cursor-ring" class="cursor-ring"></div>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NAVIGATION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <header id="nav-header" class="nav-header">
+    <div class="nav-circuit-lines">
+      <span class="circuit-line cl-1"></span>
+      <span class="circuit-line cl-2"></span>
+      <span class="circuit-line cl-3"></span>
+    </div>
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">EJ<span class="logo-blink">_</span></span>
+        <span class="logo-bracket">]</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#home"       class="nav-link" data-text="HOME">HOME</a>
+        <a href="#about"      class="nav-link" data-text="ABOUT">ABOUT</a>
+        <a href="#skills"     class="nav-link" data-text="SKILLS">SKILLS</a>
+        <a href="#experience" class="nav-link" data-text="TIMELINE">TIMELINE</a>
+        <a href="#contact"    class="nav-link" data-text="UPLINK">UPLINK</a>
+      </nav>
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span class="status-text">ONLINE</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobile-menu">
+      <a href="#home"       class="mobile-nav-link">HOME</a>
+      <a href="#about"      class="mobile-nav-link">ABOUT</a>
+      <a href="#skills"     class="mobile-nav-link">SKILLS</a>
+      <a href="#experience" class="mobile-nav-link">TIMELINE</a>
+      <a href="#contact"    class="mobile-nav-link">UPLINK</a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="home" class="hero-section">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-corner hero-corner-tl"></div>
+    <div class="hero-corner hero-corner-tr"></div>
+    <div class="hero-corner hero-corner-bl"></div>
+    <div class="hero-corner hero-corner-br"></div>
+
+    <div class="hero-content">
+      <div class="hero-pre-title">
+        <span class="pre-bracket">&lt;</span>
+        <span class="pre-code" id="pre-code-text">SYS_INIT::PROFILE_LOAD</span>
+        <span class="pre-bracket">/&gt;</span>
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        <span class="title-word" data-word="ELDAR">ELDAR</span>
+        <span class="title-space"> </span>
+        <span class="title-word title-word-accent" data-word="JAMIYEV">JAMIYEV</span>
+      </h1>
+
+      <div class="hero-subtitle-wrapper">
+        <span class="subtitle-prefix">&#47;&#47;</span>
+        <span class="hero-subtitle" id="hero-subtitle"></span>
+        <span class="hero-cursor">|</span>
+      </div>
+
+      <div class="hero-meta-row">
+        <div class="hero-meta-item">
+          <span class="meta-icon">◈</span>
+          <span class="meta-label">LOCATION</span>
+          <span class="meta-value">BAKU, AZ</span>
         </div>
-        <hr />
-        <div class="project-links">
-            <a href="about.html">About Me</a>
-            <a href="contact.html">Contact Me</a>
+        <div class="hero-meta-divider"></div>
+        <div class="hero-meta-item">
+          <span class="meta-icon">◈</span>
+          <span class="meta-label">STATUS</span>
+          <span class="meta-value meta-active">ACTIVE</span>
         </div>
-    </main>
-    <footer class="footer">
-        <p>&copy; 2024 Eldar Jamiyev. All rights reserved.</p>
-    </footer>
+        <div class="hero-meta-divider"></div>
+        <div class="hero-meta-item">
+          <span class="meta-icon">◈</span>
+          <span class="meta-label">CLEARANCE</span>
+          <span class="meta-value">GOVERNMENT</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#contact" class="cta-primary" id="cta-primary">
+          <span class="cta-inner">
+            <span class="cta-text">ESTABLISH UPLINK</span>
+            <span class="cta-icon">&#9654;</span>
+          </span>
+          <span class="cta-ripple"></span>
+          <span class="cta-border-anim"></span>
+        </a>
+        <a href="#experience" class="cta-secondary">
+          <span>VIEW DOSSIER</span>
+        </a>
+      </div>
+
+      <div class="hero-scroll-hint">
+        <span class="scroll-text">SCROLL TO EXPLORE</span>
+        <div class="scroll-arrow">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating holographic stats -->
+    <div class="hero-holo-stats">
+      <div class="holo-stat holo-stat-1">
+        <div class="holo-number" data-target="60">0</div>
+        <div class="holo-label">USERS MANAGED</div>
+      </div>
+      <div class="holo-stat holo-stat-2">
+        <div class="holo-number" data-target="4">0</div>
+        <div class="holo-label">LANGUAGES</div>
+      </div>
+      <div class="holo-stat holo-stat-3">
+        <div class="holo-number" data-target="11">0</div>
+        <div class="holo-label">CERTIFICATIONS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ABOUT SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="about" class="about-section section-reveal">
+    <div class="section-header">
+      <div class="section-tag">&lt;NODE_002&gt;</div>
+      <h2 class="section-title">BIOGRAPHICAL <span class="accent-text">NODE</span></h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="about-grid">
+      <!-- SVG Network Animation -->
+      <div class="about-visual">
+        <div class="about-frame-border">
+          <span class="frame-corner fc-tl"></span>
+          <span class="frame-corner fc-tr"></span>
+          <span class="frame-corner fc-bl"></span>
+          <span class="frame-corner fc-br"></span>
+          <svg id="network-svg" viewBox="0 0 300 300" class="network-svg">
+            <defs>
+              <radialGradient id="nodeGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#22d3ee" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#0891b2" stop-opacity="0.3"/>
+              </radialGradient>
+              <filter id="glow-filter">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <!-- Connection lines -->
+            <line x1="150" y1="150" x2="80"  y2="80"  class="svg-line" stroke="#22d3ee" stroke-opacity="0.4"/>
+            <line x1="150" y1="150" x2="220" y2="80"  class="svg-line" stroke="#22d3ee" stroke-opacity="0.4"/>
+            <line x1="150" y1="150" x2="240" y2="180" class="svg-line" stroke="#22d3ee" stroke-opacity="0.4"/>
+            <line x1="150" y1="150" x2="100" y2="230" class="svg-line" stroke="#22d3ee" stroke-opacity="0.4"/>
+            <line x1="150" y1="150" x2="60"  y2="190" class="svg-line" stroke="#a78bfa" stroke-opacity="0.3"/>
+            <line x1="150" y1="150" x2="200" y2="240" class="svg-line" stroke="#a78bfa" stroke-opacity="0.3"/>
+            <line x1="80"  y1="80"  x2="220" y2="80"  class="svg-line" stroke="#22d3ee" stroke-opacity="0.2"/>
+            <line x1="220" y1="80"  x2="240" y2="180" class="svg-line" stroke="#22d3ee" stroke-opacity="0.2"/>
+            <!-- Satellite nodes -->
+            <circle cx="80"  cy="80"  r="8"  fill="url(#nodeGrad)" filter="url(#glow-filter)" class="svg-node"/>
+            <circle cx="220" cy="80"  r="6"  fill="url(#nodeGrad)" filter="url(#glow-filter)" class="svg-node"/>
+            <circle cx="240" cy="180" r="7"  fill="url(#nodeGrad)" filter="url(#glow-filter)" class="svg-node"/>
+            <circle cx="100" cy="230" r="5"  fill="#a78bfa" filter="url(#glow-filter)" class="svg-node"/>
+            <circle cx="60"  cy="190" r="6"  fill="#a78bfa" filter="url(#glow-filter)" class="svg-node"/>
+            <circle cx="200" cy="240" r="5"  fill="#a78bfa" filter="url(#glow-filter)" class="svg-node"/>
+            <!-- Core node -->
+            <circle cx="150" cy="150" r="18" fill="none" stroke="#22d3ee" stroke-width="2" class="core-ring-1"/>
+            <circle cx="150" cy="150" r="28" fill="none" stroke="#22d3ee" stroke-width="0.8" stroke-dasharray="4 4" class="core-ring-2"/>
+            <circle cx="150" cy="150" r="12" fill="url(#nodeGrad)" filter="url(#glow-filter)"/>
+            <!-- Labels -->
+            <text x="80"  y="65"  class="svg-label" fill="#22d3ee">AD</text>
+            <text x="215" y="65"  class="svg-label" fill="#22d3ee">VLAN</text>
+            <text x="248" y="185" class="svg-label" fill="#22d3ee">DNS</text>
+            <text x="88"  y="248" class="svg-label" fill="#a78bfa">Azure</text>
+            <text x="43"  y="205" class="svg-label" fill="#a78bfa">VPN</text>
+            <text x="195" y="258" class="svg-label" fill="#a78bfa">DHCP</text>
+            <text x="135" y="155" class="svg-label svg-label-core" fill="#fff">EJ</text>
+            <!-- Orbiting dot -->
+            <circle r="4" fill="#22d3ee" filter="url(#glow-filter)">
+              <animateMotion dur="4s" repeatCount="indefinite">
+                <mpath href="#orbit-path"/>
+              </animateMotion>
+            </circle>
+            <path id="orbit-path" d="M 150 122 A 28 28 0 1 1 149.99 122 Z" fill="none"/>
+          </svg>
+          <!-- Labels overlay -->
+          <div class="network-labels">
+            <div class="net-label nl-1">BAKU DATACENTER</div>
+            <div class="net-label nl-2">MINISTRY NODE</div>
+          </div>
+        </div>
+
+        <!-- Language badges -->
+        <div class="lang-badges">
+          <div class="lang-badge lb-az">
+            <div class="lb-flag">🇦🇿</div>
+            <div class="lb-info">
+              <div class="lb-name">Azerbaijani</div>
+              <div class="lb-level">NATIVE</div>
+            </div>
+          </div>
+          <div class="lang-badge lb-en">
+            <div class="lb-flag">🇬🇧</div>
+            <div class="lb-info">
+              <div class="lb-name">English</div>
+              <div class="lb-level">C1 · IELTS 7.0</div>
+            </div>
+          </div>
+          <div class="lang-badge lb-ru">
+            <div class="lb-flag">🇷🇺</div>
+            <div class="lb-info">
+              <div class="lb-name">Russian</div>
+              <div class="lb-level">NATIVE</div>
+            </div>
+          </div>
+          <div class="lang-badge lb-tr">
+            <div class="lb-flag">🇹🇷</div>
+            <div class="lb-info">
+              <div class="lb-name">Turkish</div>
+              <div class="lb-level">B1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio text -->
+      <div class="about-text-block">
+        <div class="about-text-frame">
+          <div class="atf-corner atf-tl"></div>
+          <div class="atf-corner atf-tr"></div>
+          <div class="atf-corner atf-bl"></div>
+          <div class="atf-corner atf-br"></div>
+          <div class="atf-scan"></div>
+          <div class="about-text-content reveal-text" data-reveal>
+            <p>System and Network Administrator currently deployed as the <span class="highlight-cyan">sole IT specialist</span> at the Ministry of Economy's 195-1 Call Center — a government infrastructure spanning <span class="highlight-purple">60+ active users</span>. Seconded via Caspel LLC, independently responsible for the full operational continuity of a critical communications node.</p>
+            <p>Technically proficient across <span class="highlight-cyan">VLAN/DHCP fault analysis</span>, Active Directory management, server room documentation, and cross-departmental coordination with Ministry administrators. Concurrently advancing strategic competency through an <span class="highlight-purple">MBA in Project Management</span> at Azerbaijan Technical University — taught entirely in English.</p>
+            <p>Multilingual operator: Azerbaijani (native), Russian (native), English (C1 — IELTS 7.0), Turkish (B1). Holder of <span class="highlight-cyan">11+ verified certifications</span> from Cisco, Coursera, Google, Microsoft, and British Council.</p>
+          </div>
+        </div>
+
+        <!-- Quick stat bars -->
+        <div class="about-stat-bars">
+          <div class="stat-bar-item">
+            <div class="sb-label">
+              <span>Infrastructure Autonomy</span>
+              <span class="sb-pct">95%</span>
+            </div>
+            <div class="sb-track">
+              <div class="sb-fill" data-width="95" style="--bar-color:#22d3ee"></div>
+            </div>
+          </div>
+          <div class="stat-bar-item">
+            <div class="sb-label">
+              <span>Network Diagnostics</span>
+              <span class="sb-pct">88%</span>
+            </div>
+            <div class="sb-track">
+              <div class="sb-fill" data-width="88" style="--bar-color:#22d3ee"></div>
+            </div>
+          </div>
+          <div class="stat-bar-item">
+            <div class="sb-label">
+              <span>Server Administration</span>
+              <span class="sb-pct">82%</span>
+            </div>
+            <div class="sb-track">
+              <div class="sb-fill" data-width="82" style="--bar-color:#a78bfa"></div>
+            </div>
+          </div>
+          <div class="stat-bar-item">
+            <div class="sb-label">
+              <span>Cloud (Azure / Hybrid)</span>
+              <span class="sb-pct">75%</span>
+            </div>
+            <div class="sb-track">
+              <div class="sb-fill" data-width="75" style="--bar-color:#a78bfa"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SKILLS SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="skills" class="skills-section section-reveal">
+    <div class="section-header">
+      <div class="section-tag">&lt;NODE_003&gt;</div>
+      <h2 class="section-title">ACTIVE <span class="accent-text">MATRIX</span></h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="skills-grid" id="skills-grid">
+
+      <div class="skill-card" data-skill="Network Management">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <circle cx="30" cy="30" r="8" fill="none" stroke="#22d3ee" stroke-width="2" class="sc-svg-ring"/>
+              <line x1="30" y1="22" x2="30" y2="8"  stroke="#22d3ee" stroke-width="1.5"/>
+              <line x1="30" y1="38" x2="30" y2="52" stroke="#22d3ee" stroke-width="1.5"/>
+              <line x1="22" y1="30" x2="8"  y2="30" stroke="#22d3ee" stroke-width="1.5"/>
+              <line x1="38" y1="30" x2="52" y2="30" stroke="#22d3ee" stroke-width="1.5"/>
+              <circle cx="30" cy="8"  r="4" fill="#22d3ee" class="sc-svg-dot"/>
+              <circle cx="30" cy="52" r="4" fill="#22d3ee" class="sc-svg-dot"/>
+              <circle cx="8"  cy="30" r="4" fill="#22d3ee" class="sc-svg-dot"/>
+              <circle cx="52" cy="30" r="4" fill="#22d3ee" class="sc-svg-dot"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Network Management</h3>
+          <p class="sc-tags">VLAN · DHCP · TCP/IP · DNS</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="90"><div class="sc-bar-fill"></div></div>
+          </div>
+          <div class="sc-level">ADVANCED</div>
+        </div>
+      </div>
+
+      <div class="skill-card" data-skill="Windows Server & AD">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <rect x="10" y="10" width="18" height="18" fill="none" stroke="#22d3ee" stroke-width="2" class="sc-svg-rect"/>
+              <rect x="32" y="10" width="18" height="18" fill="none" stroke="#22d3ee" stroke-width="2" class="sc-svg-rect" style="animation-delay:0.2s"/>
+              <rect x="10" y="32" width="18" height="18" fill="none" stroke="#a78bfa" stroke-width="2" class="sc-svg-rect" style="animation-delay:0.4s"/>
+              <rect x="32" y="32" width="18" height="18" fill="none" stroke="#a78bfa" stroke-width="2" class="sc-svg-rect" style="animation-delay:0.6s"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Windows Server & AD</h3>
+          <p class="sc-tags">Active Directory · GPO · DNS</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="85"><div class="sc-bar-fill"></div></div>
+          </div>
+          <div class="sc-level">ADVANCED</div>
+        </div>
+      </div>
+
+      <div class="skill-card" data-skill="Linux Administration">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <rect x="8" y="14" width="44" height="30" rx="3" fill="none" stroke="#22d3ee" stroke-width="2"/>
+              <line x1="8" y1="40" x2="52" y2="40" stroke="#22d3ee" stroke-width="1.5"/>
+              <text x="12" y="35" font-family="monospace" font-size="9" fill="#22d3ee" class="sc-svg-code">$ sudo_</text>
+              <line x1="20" y1="48" x2="40" y2="48" stroke="#22d3ee" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Linux Administration</h3>
+          <p class="sc-tags">Bash · CLI · File Systems</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="80"><div class="sc-bar-fill"></div></div>
+          </div>
+          <div class="sc-level">PROFICIENT</div>
+        </div>
+      </div>
+
+      <div class="skill-card" data-skill="Virtualization">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <rect x="10" y="20" width="40" height="24" rx="2" fill="none" stroke="#a78bfa" stroke-width="2" class="sc-svg-vm"/>
+              <rect x="16" y="26" width="28" height="12" rx="1" fill="none" stroke="#a78bfa" stroke-width="1.5" class="sc-svg-vm" style="animation-delay:0.3s"/>
+              <line x1="30" y1="10" x2="30" y2="20" stroke="#a78bfa" stroke-width="1.5"/>
+              <circle cx="30" cy="8" r="4" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Virtualization</h3>
+          <p class="sc-tags">Hyper-V · VMware · Proxmox</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="78"><div class="sc-bar-fill" style="--fill-color:#a78bfa"></div></div>
+          </div>
+          <div class="sc-level">PROFICIENT</div>
+        </div>
+      </div>
+
+      <div class="skill-card" data-skill="Cloud (Azure)">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <path d="M 15 38 Q 10 38 10 32 Q 10 24 18 24 Q 18 16 28 16 Q 40 16 40 26 Q 48 26 48 34 Q 48 40 40 40 Z" fill="none" stroke="#22d3ee" stroke-width="1.8" class="sc-svg-cloud"/>
+              <line x1="25" y1="44" x2="35" y2="44" stroke="#22d3ee" stroke-width="1.5"/>
+              <line x1="30" y1="40" x2="30" y2="44" stroke="#22d3ee" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Cloud Infrastructure</h3>
+          <p class="sc-tags">Azure · Hybrid Environments</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="75"><div class="sc-bar-fill"></div></div>
+          </div>
+          <div class="sc-level">INTERMEDIATE</div>
+        </div>
+      </div>
+
+      <div class="skill-card" data-skill="Scripting">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <polyline points="10,30 22,18 10,6" fill="none" stroke="#a78bfa" stroke-width="2" class="sc-svg-chevron"/>
+              <line x1="28" y1="42" x2="50" y2="42" stroke="#22d3ee" stroke-width="2" class="sc-svg-line-anim"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Scripting & Automation</h3>
+          <p class="sc-tags">PowerShell · Bash · Python</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="72"><div class="sc-bar-fill" style="--fill-color:#a78bfa"></div></div>
+          </div>
+          <div class="sc-level">INTERMEDIATE</div>
+        </div>
+      </div>
+
+      <div class="skill-card" data-skill="InfoSec">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <path d="M 30 8 L 50 16 L 50 32 Q 50 48 30 54 Q 10 48 10 32 L 10 16 Z" fill="none" stroke="#22d3ee" stroke-width="2" class="sc-svg-shield"/>
+              <polyline points="21,30 27,36 39,22" fill="none" stroke="#22d3ee" stroke-width="2.5"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Information Security</h3>
+          <p class="sc-tags">Access Control · Patching</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="80"><div class="sc-bar-fill"></div></div>
+          </div>
+          <div class="sc-level">PROFICIENT</div>
+        </div>
+      </div>
+
+      <div class="skill-card" data-skill="Cisco Networking">
+        <div class="sc-glow"></div>
+        <div class="sc-border-anim"></div>
+        <div class="sc-inner">
+          <div class="sc-icon-wrap">
+            <svg viewBox="0 0 60 60" class="sc-svg">
+              <rect x="8"  y="24" width="10" height="14" rx="1" fill="none" stroke="#22d3ee" stroke-width="1.8" class="sc-svg-rect"/>
+              <rect x="25" y="18" width="10" height="20" rx="1" fill="none" stroke="#22d3ee" stroke-width="1.8" class="sc-svg-rect" style="animation-delay:0.2s"/>
+              <rect x="42" y="22" width="10" height="16" rx="1" fill="none" stroke="#22d3ee" stroke-width="1.8" class="sc-svg-rect" style="animation-delay:0.4s"/>
+              <line x1="18" y1="30" x2="25" y2="28" stroke="#22d3ee" stroke-width="1.2" opacity="0.7"/>
+              <line x1="35" y1="28" x2="42" y2="29" stroke="#22d3ee" stroke-width="1.2" opacity="0.7"/>
+            </svg>
+          </div>
+          <h3 class="sc-title">Cisco Networking</h3>
+          <p class="sc-tags">CCNAv7 · CCNA R&amp;S</p>
+          <div class="sc-bar-wrap">
+            <div class="sc-bar" data-width="85"><div class="sc-bar-fill"></div></div>
+          </div>
+          <div class="sc-level">ADVANCED</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- EXPERIENCE / TIMELINE SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="experience" class="experience-section section-reveal">
+    <div class="section-header">
+      <div class="section-tag">&lt;NODE_004&gt;</div>
+      <h2 class="section-title">OPERATIVE <span class="accent-text">CHRONICLE</span></h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="timeline-container">
+      <div class="timeline-beam">
+        <div class="beam-pulse"></div>
+      </div>
+
+      <!-- Item 1 -->
+      <div class="timeline-item ti-right reveal-timeline">
+        <div class="ti-connector">
+          <div class="ti-dot">
+            <div class="ti-dot-inner"></div>
+            <div class="ti-dot-ring"></div>
+          </div>
+        </div>
+        <div class="ti-card">
+          <div class="tic-border-anim"></div>
+          <div class="tic-corner tic-tl"></div>
+          <div class="tic-corner tic-br"></div>
+          <div class="tic-header">
+            <div class="tic-date" data-date="Nov 2025">
+              <span class="date-prefix">EPOCH:</span>
+              <span class="date-value">NOV 2025 – PRESENT</span>
+            </div>
+            <div class="tic-badge tic-badge-active">ACTIVE DEPLOYMENT</div>
+          </div>
+          <h3 class="tic-role">IT Support Specialist</h3>
+          <div class="tic-org">
+            <span class="org-tag">CASPEL LLC</span>
+            <span class="org-arrow">→</span>
+            <span class="org-sub">Ministry of Economy · 195-1 Call Center</span>
+          </div>
+          <ul class="tic-bullets">
+            <li>Sole IT specialist managing full infrastructure for a <strong>60+ user</strong> government call center</li>
+            <li>On-site VLAN/DHCP fault analysis, thin client and PC hardware servicing</li>
+            <li>Server room inventory, equipment documentation, service acceptance certificates</li>
+            <li>Technical coordination with Ministry administrators for network and system faults</li>
+          </ul>
+          <div class="tic-tech-tags">
+            <span class="tech-tag">VLAN</span>
+            <span class="tech-tag">DHCP</span>
+            <span class="tech-tag">Active Directory</span>
+            <span class="tech-tag">Server Room</span>
+            <span class="tech-tag">Thin Clients</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="timeline-item ti-left reveal-timeline">
+        <div class="ti-connector">
+          <div class="ti-dot">
+            <div class="ti-dot-inner" style="background:#a78bfa"></div>
+            <div class="ti-dot-ring" style="border-color:#a78bfa"></div>
+          </div>
+        </div>
+        <div class="ti-card">
+          <div class="tic-border-anim" style="--brd-color:#a78bfa"></div>
+          <div class="tic-corner tic-tl" style="--corner-color:#a78bfa"></div>
+          <div class="tic-corner tic-br" style="--corner-color:#a78bfa"></div>
+          <div class="tic-header">
+            <div class="tic-date">
+              <span class="date-prefix">EPOCH:</span>
+              <span class="date-value">DEC 2025 · 2–3 WEEKS</span>
+            </div>
+            <div class="tic-badge tic-badge-complete" style="--badge-color:#a78bfa">COMPLETED</div>
+          </div>
+          <h3 class="tic-role">IT Field Technician</h3>
+          <div class="tic-org">
+            <span class="org-tag" style="border-color:#a78bfa;color:#a78bfa">CASPEL LLC</span>
+            <span class="org-arrow">→</span>
+            <span class="org-sub">Coca-Cola Bottlers — Baku Plant &amp; Babek Plaza</span>
+          </div>
+          <ul class="tic-bullets">
+            <li>Temporary cover under direct supervision of internal IT manager</li>
+            <li>Technical servicing of terminals and network equipment in production and office environments</li>
+            <li>On-demand IT support across two facility types (manufacturing plant &amp; corporate office)</li>
+          </ul>
+          <div class="tic-tech-tags">
+            <span class="tech-tag" style="border-color:#a78bfa;color:#a78bfa">Hardware</span>
+            <span class="tech-tag" style="border-color:#a78bfa;color:#a78bfa">Terminals</span>
+            <span class="tech-tag" style="border-color:#a78bfa;color:#a78bfa">Network Equipment</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="timeline-item ti-right reveal-timeline">
+        <div class="ti-connector">
+          <div class="ti-dot">
+            <div class="ti-dot-inner"></div>
+            <div class="ti-dot-ring"></div>
+          </div>
+        </div>
+        <div class="ti-card">
+          <div class="tic-border-anim"></div>
+          <div class="tic-corner tic-tl"></div>
+          <div class="tic-corner tic-br"></div>
+          <div class="tic-header">
+            <div class="tic-date">
+              <span class="date-prefix">EPOCH:</span>
+              <span class="date-value">NOV 2025 – DEC 2025</span>
+            </div>
+            <div class="tic-badge tic-badge-complete">COMPLETED</div>
+          </div>
+          <h3 class="tic-role">Junior IT Technician</h3>
+          <div class="tic-org">
+            <span class="org-tag">CASPEL LLC</span>
+            <span class="org-arrow">→</span>
+            <span class="org-sub">Baku City Operative Tax Control</span>
+          </div>
+          <ul class="tic-bullets">
+            <li>First 2 months of career — <strong>300-user government infrastructure</strong></li>
+            <li>Physical technical servicing under experienced mentor guidance</li>
+            <li>Adoption of corporate IT procedures and accountability frameworks</li>
+          </ul>
+          <div class="tic-tech-tags">
+            <span class="tech-tag">Government IT</span>
+            <span class="tech-tag">Physical Servicing</span>
+            <span class="tech-tag">Documentation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="timeline-edu-divider">
+        <span class="edu-div-text">◈ ACADEMIC RECORD ◈</span>
+      </div>
+
+      <!-- MBA -->
+      <div class="timeline-item ti-left reveal-timeline">
+        <div class="ti-connector">
+          <div class="ti-dot">
+            <div class="ti-dot-inner" style="background:#22d3ee"></div>
+            <div class="ti-dot-ring" style="border-color:#22d3ee"></div>
+          </div>
+        </div>
+        <div class="ti-card ti-edu-card">
+          <div class="tic-border-anim"></div>
+          <div class="tic-corner tic-tl"></div>
+          <div class="tic-corner tic-br"></div>
+          <div class="tic-header">
+            <div class="tic-date">
+              <span class="date-prefix">EPOCH:</span>
+              <span class="date-value">SEP 2025 – PRESENT</span>
+            </div>
+            <div class="tic-badge tic-badge-active">IN PROGRESS</div>
+          </div>
+          <h3 class="tic-role">MBA — Project Management</h3>
+          <div class="tic-org">
+            <span class="org-tag">AZTU</span>
+            <span class="org-arrow">→</span>
+            <span class="org-sub">Azerbaijan Technical University · Taught in English</span>
+          </div>
+          <p class="tic-edu-note">Focus: IT infrastructure project planning, resource management and strategic decision-making.</p>
+          <!-- Circular progress -->
+          <div class="mba-progress-wrap">
+            <svg class="mba-circle-svg" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#1e293b" stroke-width="6"/>
+              <circle cx="40" cy="40" r="32" fill="none" stroke="#22d3ee" stroke-width="6"
+                stroke-dasharray="201" stroke-dashoffset="100"
+                stroke-linecap="round" transform="rotate(-90 40 40)"
+                class="mba-circle-fill"/>
+              <text x="40" y="37" text-anchor="middle" fill="#22d3ee" font-family="Orbitron" font-size="10">MBA</text>
+              <text x="40" y="50" text-anchor="middle" fill="#94a3b8" font-family="Share Tech Mono" font-size="7">IN PROG</text>
+            </svg>
+            <div class="mba-detail">
+              <div class="mba-pct">~50%</div>
+              <div class="mba-note">Program completion estimated</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bachelor -->
+      <div class="timeline-item ti-right reveal-timeline">
+        <div class="ti-connector">
+          <div class="ti-dot">
+            <div class="ti-dot-inner" style="background:#a78bfa"></div>
+            <div class="ti-dot-ring" style="border-color:#a78bfa"></div>
+          </div>
+        </div>
+        <div class="ti-card ti-edu-card">
+          <div class="tic-border-anim" style="--brd-color:#a78bfa"></div>
+          <div class="tic-corner tic-tl" style="--corner-color:#a78bfa"></div>
+          <div class="tic-corner tic-br" style="--corner-color:#a78bfa"></div>
+          <div class="tic-header">
+            <div class="tic-date">
+              <span class="date-prefix">EPOCH:</span>
+              <span class="date-value">SEP 2021 – JUL 2025</span>
+            </div>
+            <div class="tic-badge" style="--badge-color:#a78bfa;border-color:#a78bfa;color:#a78bfa">GRADUATED</div>
+          </div>
+          <h3 class="tic-role">Bachelor — Sports Coaching (Swimming)</h3>
+          <div class="tic-org">
+            <span class="org-tag" style="border-color:#a78bfa;color:#a78bfa">AZISA</span>
+            <span class="org-arrow">→</span>
+            <span class="org-sub">Azerbaijan Sports Academy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP IT -->
+      <div class="timeline-item ti-left reveal-timeline">
+        <div class="ti-connector">
+          <div class="ti-dot">
+            <div class="ti-dot-inner"></div>
+            <div class="ti-dot-ring"></div>
+          </div>
+        </div>
+        <div class="ti-card ti-edu-card">
+          <div class="tic-border-anim"></div>
+          <div class="tic-corner tic-tl"></div>
+          <div class="tic-corner tic-br"></div>
+          <div class="tic-header">
+            <div class="tic-date">
+              <span class="date-prefix">EPOCH:</span>
+              <span class="date-value">SEP 2018 – MAR 2020</span>
+            </div>
+            <div class="tic-badge tic-badge-complete">COMPLETED</div>
+          </div>
+          <h3 class="tic-role">Professional Course — Software, Networks &amp; Cybersecurity</h3>
+          <div class="tic-org">
+            <span class="org-tag">STEP IT</span>
+            <span class="org-arrow">→</span>
+            <span class="org-sub">STEP IT Academy Azerbaijan</span>
+          </div>
+          <ul class="tic-bullets">
+            <li>CCNAv7: Introduction to Networks</li>
+            <li>CCNA R&amp;S: Routing &amp; Switching Essentials</li>
+            <li>IT Essentials: PC Hardware &amp; Software</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="certs-section">
+      <h3 class="certs-title"><span class="cert-bracket">&#9135;&#9135;</span> VERIFIED CREDENTIALS <span class="cert-bracket">&#9135;&#9135;</span></h3>
+      <div class="certs-grid">
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Linux SysAdmin for DevOps Specialization</div>
+          <div class="cert-issuer">Coursera · 2026</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Fault-Tolerant Active Directory Deployment</div>
+          <div class="cert-issuer">Coursera · Google Cloud · 2026</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Azure ML Designer — Clustering Models</div>
+          <div class="cert-issuer">Coursera · Microsoft · 2026</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Azure Cognitive Services · Computer Vision</div>
+          <div class="cert-issuer">Coursera · Microsoft · 2026</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">IT Essentials</div>
+          <div class="cert-issuer">Cisco Networking Academy · 2026</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Windows Server Administration (Complete)</div>
+          <div class="cert-issuer">Coursera · Packt · 2025</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Active Directory in Hybrid Environments</div>
+          <div class="cert-issuer">Coursera · Packt · 2025</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">System Administration &amp; IT Infrastructure</div>
+          <div class="cert-issuer">Coursera · Google · 2025</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Windows Server Management &amp; Security</div>
+          <div class="cert-issuer">Coursera · University of Colorado · 2025</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon cert-icon-ielts">&#9670;</div>
+          <div class="cert-name">IELTS Academic — CEFR C1, Score 7.0</div>
+          <div class="cert-issuer">British Council · 2025</div>
+        </div>
+        <div class="cert-card cc-reveal">
+          <div class="cert-icon">&#9670;</div>
+          <div class="cert-name">Professional Course in Software, Networks &amp; Cybersecurity</div>
+          <div class="cert-issuer">STEP IT Academy Azerbaijan · 2020</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CONTACT SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="contact" class="contact-section section-reveal">
+    <div class="section-header">
+      <div class="section-tag">&lt;NODE_005&gt;</div>
+      <h2 class="section-title">UPLINK <span class="accent-text">TERMINAL</span></h2>
+      <div class="section-underline"></div>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info-panel">
+        <div class="cip-frame">
+          <div class="cip-corner cip-tl"></div>
+          <div class="cip-corner cip-tr"></div>
+          <div class="cip-corner cip-bl"></div>
+          <div class="cip-corner cip-br"></div>
+          <div class="cip-scan"></div>
+
+          <div class="cip-header">
+            <div class="cip-ping">
+              <span class="ping-dot"></span>
+              <span class="ping-text">UPLINK ACTIVE</span>
+            </div>
+          </div>
+
+          <div class="contact-item ci-email">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M2 8l10 6 10-6"/>
+              </svg>
+            </div>
+            <div class="ci-detail">
+              <div class="ci-label">SECURE CHANNEL</div>
+              <a href="mailto:eldarcmiyev@gmail.com" class="ci-value">eldarcmiyev@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item ci-phone">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6.6 10.8a15.5 15.5 0 006.6 6.6l2.2-2.2a1 1 0 011.1-.2 11.4 11.4 0 003.6.7 1 1 0 011 1V20a1 1 0 01-1 1 17 17 0 01-17-17 1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.7 3.6a1 1 0 01-.2 1.1L6.6 10.8z"/>
+              </svg>
+            </div>
+            <div class="ci-detail">
+              <div class="ci-label">VOICE UPLINK</div>
+              <div class="ci-value">+994 555 346 688</div>
+            </div>
+          </div>
+
+          <div class="contact-item ci-location">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+            <div class="ci-detail">
+              <div class="ci-label">GEO-LOCATION</div>
+              <div class="ci-value">Baku, Azerbaijan</div>
+            </div>
+          </div>
+
+          <div class="contact-item ci-linkedin">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="4"/>
+                <path d="M7 10v7M7 7v.5M12 17v-4a2 2 0 014 0v4M12 10v7"/>
+              </svg>
+            </div>
+            <div class="ci-detail">
+              <div class="ci-label">NETWORK NODE</div>
+              <a href="https://linkedin.com/in/eldar-jamiyev-37b29320a/" target="_blank" class="ci-value">linkedin.com/in/eldar-jamiyev</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 3D Spinning Cube Icons -->
+        <div class="cube-icons-row">
+          <div class="cube-icon-wrap">
+            <div class="cube-icon ci-cube-email">
+              <div class="cube-face cube-front">✉</div>
+              <div class="cube-face cube-back">✉</div>
+              <div class="cube-face cube-left">✉</div>
+              <div class="cube-face cube-right">✉</div>
+              <div class="cube-face cube-top">✉</div>
+              <div class="cube-face cube-bottom">✉</div>
+            </div>
+            <div class="cube-label">EMAIL</div>
+          </div>
+          <div class="cube-icon-wrap">
+            <div class="cube-icon ci-cube-li">
+              <div class="cube-face cube-front">in</div>
+              <div class="cube-face cube-back">in</div>
+              <div class="cube-face cube-left">in</div>
+              <div class="cube-face cube-right">in</div>
+              <div class="cube-face cube-top">in</div>
+              <div class="cube-face cube-bottom">in</div>
+            </div>
+            <div class="cube-label">LINKEDIN</div>
+          </div>
+          <div class="cube-icon-wrap">
+            <div class="cube-icon ci-cube-loc">
+              <div class="cube-face cube-front">📍</div>
+              <div class="cube-face cube-back">📍</div>
+              <div class="cube-face cube-left">📍</div>
+              <div class="cube-face cube-right">📍</div>
+              <div class="cube-face cube-top">📍</div>
+              <div class="cube-face cube-bottom">📍</div>
+            </div>
+            <div class="cube-label">BAKU</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-panel">
+        <div class="cfp-frame">
+          <div class="cfp-corner cfp-tl"></div>
+          <div class="cfp-corner cfp-tr"></div>
+          <div class="cfp-corner cfp-bl"></div>
+          <div class="cfp-corner cfp-br"></div>
+
+          <div class="cfp-title">INITIATE TRANSMISSION</div>
+
+          <div class="form-wrap" id="form-wrap">
+            <div class="form-field-group">
+              <div class="form-field">
+                <label class="ff-label">SENDER_CALLSIGN</label>
+                <div class="ff-input-wrap">
+                  <div class="ff-scan-line"></div>
+                  <input type="text" class="ff-input" placeholder="Your name..." autocomplete="off"/>
+                </div>
+              </div>
+              <div class="form-field">
+                <label class="ff-label">TRANSMISSION_ORIGIN</label>
+                <div class="ff-input-wrap">
+                  <div class="ff-scan-line"></div>
+                  <input type="email" class="ff-input" placeholder="your@email.com" autocomplete="off"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="ff-label">SUBJECT_HEADER</label>
+              <div class="ff-input-wrap">
+                <div class="ff-scan-line"></div>
+                <input type="text" class="ff-input" placeholder="Message subject..." autocomplete="off"/>
+              </div>
+            </div>
+            <div class="form-field">
+              <label class="ff-label">MESSAGE_PAYLOAD</label>
+              <div class="ff-input-wrap ff-textarea-wrap">
+                <div class="ff-scan-line"></div>
+                <textarea class="ff-input ff-textarea" placeholder="Enter your message..." rows="5"></textarea>
+              </div>
+            </div>
+            <button class="submit-btn" id="submit-btn">
+              <span class="sb-text">TRANSMIT MESSAGE</span>
+              <span class="sb-icon">&#9654;</span>
+              <div class="sb-particles" id="sb-particles"></div>
+            </button>
+          </div>
+
+          <!-- Transmission success state -->
+          <div class="transmission-success" id="transmission-success">
+            <div class="ts-icon">
+              <svg viewBox="0 0 80 80" class="ts-svg">
+                <circle cx="40" cy="40" r="35" fill="none" stroke="#22d3ee" stroke-width="2" class="ts-circle"/>
+                <polyline points="22,40 34,52 58,26" fill="none" stroke="#22d3ee" stroke-width="3" class="ts-check"/>
+              </svg>
+            </div>
+            <div class="ts-title">MESSAGE TRANSMITTED</div>
+            <div class="ts-subtitle">Uplink established · Await response</div>
+            <div class="ts-code">TX_STATUS :: 200 OK ✓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-circuit">
+      <span class="fc-line fc-l1"></span>
+      <span class="fc-line fc-l2"></span>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="logo-bracket">[</span>EJ<span class="logo-bracket">]</span>
+      </div>
+      <div class="footer-text">
+        <span class="ft-code">&#47;&#47;</span> Eldar Jamiyev · System &amp; Network Administrator · Baku, Azerbaijan
+      </div>
+      <div class="footer-status">
+        <span class="fs-dot"></span>
+        <span>ALL SYSTEMS NOMINAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
