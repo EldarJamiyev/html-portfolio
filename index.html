@@ -35,7 +35,6 @@
     </div>
     <div class="nav-inner">
       <div class="nav-logo">
-        <img src="eldar-pfp.jpeg" alt="Eldar Jamiyev" class="nav-avatar" />
         <span class="logo-bracket">[</span>
         <span class="logo-text">EJ<span class="logo-blink">_</span></span>
         <span class="logo-bracket">]</span>
@@ -79,14 +78,6 @@
         <span class="pre-bracket">&lt;</span>
         <span class="pre-code" id="pre-code-text">SYS_INIT::PROFILE_LOAD</span>
         <span class="pre-bracket">/&gt;</span>
-      </div>
-
-      <div class="hero-avatar-wrap">
-        <div class="hero-avatar-ring hero-avatar-ring-outer"></div>
-        <div class="hero-avatar-ring hero-avatar-ring-inner"></div>
-        <div class="hero-avatar-ring hero-avatar-ring-dash"></div>
-        <img src="eldar-pfp.jpeg" alt="Eldar Jamiyev" class="hero-avatar-img" />
-        <div class="hero-avatar-scan"></div>
       </div>
 
       <h1 class="hero-title" id="hero-title">
@@ -171,26 +162,14 @@
     </div>
 
     <div class="about-grid">
-      <!-- Photo + Network Animation -->
+      <!-- SVG Network Animation -->
       <div class="about-visual">
         <div class="about-frame-border">
           <span class="frame-corner fc-tl"></span>
           <span class="frame-corner fc-tr"></span>
           <span class="frame-corner fc-bl"></span>
           <span class="frame-corner fc-br"></span>
-
-          <!-- Profile photo -->
-          <div class="about-photo-wrap">
-            <div class="about-photo-glow"></div>
-            <img src="eldar-pfp.jpeg" alt="Eldar Jamiyev" class="about-photo-img" />
-            <div class="about-photo-scan"></div>
-            <div class="about-photo-badge">
-              <span class="apb-dot"></span>
-              <span class="apb-text">IDENTITY VERIFIED</span>
-            </div>
-          </div>
-
-          <svg id="network-svg" viewBox="0 0 300 300" class="network-svg network-svg-overlay">
+          <svg id="network-svg" viewBox="0 0 300 300" class="network-svg">
             <defs>
               <radialGradient id="nodeGrad" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#22d3ee" stop-opacity="1"/>
@@ -220,9 +199,10 @@
             <circle cx="100" cy="230" r="5"  fill="#a78bfa" filter="url(#glow-filter)" class="svg-node"/>
             <circle cx="60"  cy="190" r="6"  fill="#a78bfa" filter="url(#glow-filter)" class="svg-node"/>
             <circle cx="200" cy="240" r="5"  fill="#a78bfa" filter="url(#glow-filter)" class="svg-node"/>
-            <!-- Core node rings only (photo is behind) -->
+            <!-- Core node -->
             <circle cx="150" cy="150" r="18" fill="none" stroke="#22d3ee" stroke-width="2" class="core-ring-1"/>
             <circle cx="150" cy="150" r="28" fill="none" stroke="#22d3ee" stroke-width="0.8" stroke-dasharray="4 4" class="core-ring-2"/>
+            <circle cx="150" cy="150" r="12" fill="url(#nodeGrad)" filter="url(#glow-filter)"/>
             <!-- Labels -->
             <text x="80"  y="65"  class="svg-label" fill="#22d3ee">AD</text>
             <text x="215" y="65"  class="svg-label" fill="#22d3ee">VLAN</text>
@@ -230,6 +210,7 @@
             <text x="88"  y="248" class="svg-label" fill="#a78bfa">Azure</text>
             <text x="43"  y="205" class="svg-label" fill="#a78bfa">VPN</text>
             <text x="195" y="258" class="svg-label" fill="#a78bfa">DHCP</text>
+            <text x="135" y="155" class="svg-label svg-label-core" fill="#fff">EJ</text>
             <!-- Orbiting dot -->
             <circle r="4" fill="#22d3ee" filter="url(#glow-filter)">
               <animateMotion dur="4s" repeatCount="indefinite">
@@ -864,7 +845,7 @@
             </div>
             <div class="ci-detail">
               <div class="ci-label">SECURE CHANNEL</div>
-              <a href="/cdn-cgi/l/email-protection#5c3930383d2e3f313525392a1c3b313d3530723f3331" class="ci-value"><span class="__cf_email__" data-cfemail="e7828b838695848a8e9e8291a7808a868e8bc984888a">[email&#160;protected]</span></a>
+              <a href="mailto:eldarcmiyev@gmail.com" class="ci-value">eldarcmiyev@gmail.com</a>
             </div>
           </div>
 
@@ -1025,4 +1006,12 @@
         <span class="ft-code">&#47;&#47;</span> Eldar Jamiyev · System &amp; Network Administrator · Baku, Azerbaijan
       </div>
       <div class="footer-status">
-        <span class="fs-dot"
+        <span class="fs-dot"></span>
+        <span>ALL SYSTEMS NOMINAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
