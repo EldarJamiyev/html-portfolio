@@ -806,3 +806,4 @@ if (prefersReduced.matches) {
   document.documentElement.style.setProperty('--dur-lg',  '0ms');
   document.documentElement.style.setProperty('--dur-xl',  '0ms');
 }
+ 
